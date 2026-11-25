@@ -77,27 +77,29 @@ function App() {
         <p>No matches found.</p>
       )}
 
-      {matches.map((match) => (
-        <MatchCard
-          key={match.id}
-          id={match.id}
-          team1={match.team1}
-          team2={match.team2}
-          date={match.date}
-          venue={match.venue}
-          price={match.price}
-          available_seats={match.available_seats}
-          onSeatsUpdated={(matchId, newSeats) => {
-            setMatches((current) =>
-              current.map((item) =>
-                item.id === matchId
-                  ? { ...item, available_seats: newSeats }
-                  : item
+      <div className="matches">
+        {matches.map((match) => (
+          <MatchCard
+            key={match.id}
+            id={match.id}
+            team1={match.team1}
+            team2={match.team2}
+            date={match.date}
+            venue={match.venue}
+            price={match.price}
+            available_seats={match.available_seats}
+            onSeatsUpdated={(matchId, newSeats) => {
+              setMatches((current) =>
+                current.map((item) =>
+                  item.id === matchId
+                    ? { ...item, available_seats: newSeats }
+                    : item
+                )
               )
-            )
-          }}
-        />
-      ))}
+            }}
+          />
+        ))}
+      </div>
     </div>
   )
 }
